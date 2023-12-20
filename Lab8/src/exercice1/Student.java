@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Student {
+public class Student implements Comparable<Student> {
     String nom;
     int age;
     double moyenne;
@@ -51,6 +51,14 @@ public class Student {
                 '}';
     }
 
+    @Override
+    public int compareTo(Student o) {
+        if(this.moyenne == o.moyenne){
+            return 0;
+        }else if(this.moyenne < o.moyenne){
+            return 1;
+        }else return -1;
+    }
 
     public static void main(String[] args) {
         List<Student> students = new ArrayList<>();
@@ -64,7 +72,15 @@ public class Student {
         students.add(student3);
 
         students.forEach(System.out::println);
+        students.forEach((item) -> {
+            System.out.println(item);
+            //
+        });
+
+
         // sort
+
+        Collections.sort(students);
         Collections.sort(students, new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
@@ -87,6 +103,11 @@ public class Student {
         }
 
         students.stream().filter(st -> st.getMoyenne()>80)
+                .map(item -> item.getMoyenne() + 2)
                 .forEach(System.out::println);
     }
+
+
+
+
 }

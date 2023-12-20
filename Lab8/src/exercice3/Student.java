@@ -7,6 +7,8 @@ public class Student {
     int age;
     double moyenne;
 
+    Map<String , Double> notes = new HashMap<>();
+
     // TODO look at Lombok
 
     public Student(String nom, int age, double moyenne) {
@@ -39,6 +41,14 @@ public class Student {
         this.moyenne = moyenne;
     }
 
+    public Map<String, Double> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Map<String, Double> notes) {
+        this.notes = notes;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -48,6 +58,21 @@ public class Student {
                 '}';
     }
 
+
+    public void initNotes(List<String> cours){
+        for (String c: cours             ) {
+            notes.put(c, 0.00);
+        }
+    }
+
+
+    public void updateMoyenne(){
+        double sum=0.00;
+        for (Map.Entry<String, Double> e: notes.entrySet()             ) {
+            sum +=e.getValue();
+        }
+    this.setMoyenne(sum / notes.size());
+    }
 
     public static void main(String[] args) {
         List<Student> students = new ArrayList<>();
@@ -98,5 +123,10 @@ public class Student {
         for (Map.Entry<String, Double> s: notes.entrySet()  ) {
             System.out.println("key : "+ s.getKey() + " value : " + s.getValue());
         }
+
+        student1.setNotes(notes);
+
+        student1.updateMoyenne();
+        System.out.println(student1);
     }
 }

@@ -5,10 +5,12 @@ import java.util.Scanner;
 
 public class binaryFile {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+            {
 //        Scanner sc = new Scanner(System.in);
 //        String fileName = sc.nextLine();
-        try {
+
+                try {
 
         BufferedReader bfd = new BufferedReader(
                 new InputStreamReader(System.in));
@@ -38,6 +40,7 @@ public class binaryFile {
                 System.out.print("l'age :");
                 int age=Integer.parseInt(
                         bfd.readLine());
+
                 dis.writeChars( String.format("%-20s",nom));
                 dis.writeChars( String.format("%-20s",prenom));
 //                dis.writeChars( String.format("%-20s",age));

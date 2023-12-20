@@ -3,17 +3,18 @@ package exercice1;
 import java.io.*;
 import java.util.Scanner;
 
-public class binaryFile {
+public class UTFFile {
 
     public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        String fileName = sc.nextLine();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("the file name pls");
+        String fileName = sc.nextLine();
         try {
 
-        BufferedReader bfd = new BufferedReader(
-                new InputStreamReader(System.in));
-        System.out.println("the file name pls");
-        String fileName = bfd.readLine();
+//        BufferedReader bfd = new BufferedReader(
+//                new InputStreamReader(System.in));
+//        System.out.println("the file name pls");
+//        String fileName = bfd.readLine();
 
 
             DataOutputStream dis = new DataOutputStream(
@@ -24,7 +25,7 @@ public class binaryFile {
 
                 // nom
                 System.out.print("le nom " + i+ ":");
-                String nom=bfd.readLine();
+                String nom=sc.nextLine();
 
                 if(nom.isEmpty()) {
                     break;
@@ -32,14 +33,17 @@ public class binaryFile {
 
                 // prenom
                 System.out.print("Prenom :");
-                String prenom=bfd.readLine();
+                String prenom=sc.nextLine();
 
                 // age
                 System.out.print("l'age :");
+
+                // TODO to be tested
                 int age=Integer.parseInt(
-                        bfd.readLine());
-                dis.writeChars( String.format("%-20s",nom));
-                dis.writeChars( String.format("%-20s",prenom));
+                        sc.nextLine());
+//                int age = sc.nextInt();
+                dis.writeUTF( nom);
+                dis.writeUTF( prenom);
 //                dis.writeChars( String.format("%-20s",age));
                 dis.writeInt(age);
 i++;
